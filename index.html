@@ -147,11 +147,45 @@
   }
   dt { color: var(--secondary); }
   dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+  .scores { max-width: 680px; margin: 0 auto 104px; }
+  .scores table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .scores th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    padding: 0 0 10px;
+  }
+  .scores td {
+    padding: 12px 0;
+    border-top: 1px solid #e8e8ed;
+    vertical-align: baseline;
+  }
+  .scores th.num, .scores td.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    padding-left: 16px;
+  }
+  .scores td.pct { font-weight: 600; }
+  .scores a { color: var(--text); text-decoration: none; }
+  .scores a:hover { color: var(--accent); }
+  .scores tfoot td {
+    font-weight: 600;
+    border-top: 1px solid #d2d2d7;
+  }
   @media (max-width: 720px) {
     .wrap { padding-top: 48px; }
     h1 { font-size: 40px; }
     .account-name { font-size: 32px; }
-    .grid, .index { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    .scores table { font-size: 14px; }
   }
 </style>
 </head>
@@ -160,26 +194,39 @@
   <h1>Seventy of one hundred twenty-seven.</h1>
   <p class="lede">Version 12 on the held-out test pairs. Ten from each account that has at least ten, and every pair from the accounts that have fewer. It picked the higher click-through rate seventy times.</p>
   <p class="note">These photos were not in training. The test pairs were scored while the model was fit, and they did not choose the checkpoint. The score is one number per photo. A higher score means the model expects a higher click-through rate. Each pair is two photos from the same account and the same week. The CTR on the card is that week’s clicks divided by impressions. Each account contributes up to ten pairs, so a small account counts the same as a large one. On all 1,922 held-out pairs the same model is right 65.8% of the time. Seed 20.</p>
-  <nav class="index" aria-label="Accounts">
-    <a href="#acc-1461542264724799">AI Tool India Deepak <span>3 of 10</span></a>
-    <a href="#acc-894447175035223">AI Tool MIT fb1 <span>7 of 10</span></a>
-    <a href="#acc-1287442001873457">AI Tool XOR 2 <span>1 of 10</span></a>
-    <a href="#acc-199752542558626">Ai tools Brijesh 2 <span>3 of 5</span></a>
-    <a href="#acc-965312425335053">AI Tools Middle East Deepak <span>10 of 10</span></a>
-    <a href="#acc-1259110365529816">AI TV App 2 <span>5 of 10</span></a>
-    <a href="#acc-828139688922800">AITV BHAVESH <span>5 of 10</span></a>
-    <a href="#acc-779607833765451">BE10X AI 6 Brijesh <span>8 of 10</span></a>
-    <a href="#acc-1079961713158297">Be10x AI Tool 007 <span>6 of 10</span></a>
-    <a href="#acc-787397989640206">Be10x AI Tool fb2 Xor <span>1 of 2</span></a>
-    <a href="#acc-1124454755623521">Be10x Hindi AI Tool <span>4 of 10</span></a>
-    <a href="#acc-2300729216796217">Excel fb4b Sanskar <span>4 of 10</span></a>
-    <a href="#acc-1347116902878502">Excel Sanskar <span>5 of 10</span></a>
-    <a href="#acc-2195317627481797">Python Sanskar <span>8 of 10</span></a>
-  </nav>
+<section class="scores" id="accuracy">
+  <p class="kicker">Held-out accuracy</p>
+  <h2 class="account-name">By account.</h2>
+  <p class="verdict">Every test pair, counted once. The pairs below are a sample of up to ten per account.</p>
+  <table>
+    <thead>
+      <tr><th>Account</th><th class="num">Right</th><th class="num">Pairs</th><th class="num">Accuracy</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><a href="#acc-965312425335053">AI Tools Middle East Deepak</a></td><td class="num">72</td><td class="num">91</td><td class="num pct">79.1%</td></tr>
+      <tr><td><a href="#acc-1079961713158297">Be10x AI Tool 007</a></td><td class="num">811</td><td class="num">1,159</td><td class="num pct">70.0%</td></tr>
+      <tr><td><a href="#acc-2195317627481797">Python Sanskar</a></td><td class="num">16</td><td class="num">23</td><td class="num pct">69.6%</td></tr>
+      <tr><td><a href="#acc-894447175035223">AI Tool MIT fb1</a></td><td class="num">164</td><td class="num">239</td><td class="num pct">68.6%</td></tr>
+      <tr><td><a href="#acc-1259110365529816">AI TV App 2</a></td><td class="num">40</td><td class="num">62</td><td class="num pct">64.5%</td></tr>
+      <tr><td><a href="#acc-2300729216796217">Excel fb4b Sanskar</a></td><td class="num">11</td><td class="num">18</td><td class="num pct">61.1%</td></tr>
+      <tr><td><a href="#acc-199752542558626">Ai tools Brijesh 2</a></td><td class="num">3</td><td class="num">5</td><td class="num pct">60.0%</td></tr>
+      <tr><td><a href="#acc-779607833765451">BE10X AI 6 Brijesh</a></td><td class="num">10</td><td class="num">17</td><td class="num pct">58.8%</td></tr>
+      <tr><td><a href="#acc-1347116902878502">Excel Sanskar</a></td><td class="num">27</td><td class="num">52</td><td class="num pct">51.9%</td></tr>
+      <tr><td><a href="#acc-828139688922800">AITV BHAVESH</a></td><td class="num">86</td><td class="num">169</td><td class="num pct">50.9%</td></tr>
+      <tr><td><a href="#acc-787397989640206">Be10x AI Tool fb2 Xor</a></td><td class="num">1</td><td class="num">2</td><td class="num pct">50.0%</td></tr>
+      <tr><td><a href="#acc-1461542264724799">AI Tool India Deepak</a></td><td class="num">8</td><td class="num">23</td><td class="num pct">34.8%</td></tr>
+      <tr><td><a href="#acc-1124454755623521">Be10x Hindi AI Tool</a></td><td class="num">13</td><td class="num">47</td><td class="num pct">27.7%</td></tr>
+      <tr><td><a href="#acc-1287442001873457">AI Tool XOR 2</a></td><td class="num">2</td><td class="num">15</td><td class="num pct">13.3%</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>All accounts</td><td class="num">1,264</td><td class="num">1,922</td><td class="num pct">65.8%</td></tr>
+    </tfoot>
+  </table>
+</section>
 <section class="account" id="acc-1461542264724799">
-  <p class="kicker">Account</p>
+  <p class="kicker">34.8% held out</p>
   <h2 class="account-name">AI Tool India Deepak</h2>
-  <p class="verdict">Three of these ten. Drawn from 23 held-out pairs. Across all 23 in this account, the model is right 8 times.</p>
+  <p class="verdict">34.8% on this account, 8 of 23 held-out pairs. Three of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 6 Jul 2026</p>
     <h2>Misses.</h2>
@@ -582,9 +629,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-894447175035223">
-  <p class="kicker">Account</p>
+  <p class="kicker">68.6% held out</p>
   <h2 class="account-name">AI Tool MIT fb1</h2>
-  <p class="verdict">Seven of these ten. Drawn from 239 held-out pairs. Across all 239 in this account, the model is right 164 times.</p>
+  <p class="verdict">68.6% on this account, 164 of 239 held-out pairs. Seven of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 15 Jan 2024</p>
     <h2>Agrees.</h2>
@@ -987,9 +1034,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-1287442001873457">
-  <p class="kicker">Account</p>
+  <p class="kicker">13.3% held out</p>
   <h2 class="account-name">AI Tool XOR 2</h2>
-  <p class="verdict">One of these ten. Drawn from 15 held-out pairs. Across all 15 in this account, the model is right 2 times.</p>
+  <p class="verdict">13.3% on this account, 2 of 15 held-out pairs. One of these ten agrees.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 20 Jan 2025</p>
     <h2>Misses.</h2>
@@ -1392,9 +1439,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-199752542558626">
-  <p class="kicker">Account</p>
+  <p class="kicker">60.0% held out</p>
   <h2 class="account-name">Ai tools Brijesh 2</h2>
-  <p class="verdict">Three of these five. This account has only five held-out pairs, so all of them are here.</p>
+  <p class="verdict">60.0% on this account, 3 of 5 held-out pairs. All five are on this page.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 25 Aug 2025</p>
     <h2>Agrees.</h2>
@@ -1597,9 +1644,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-965312425335053">
-  <p class="kicker">Account</p>
+  <p class="kicker">79.1% held out</p>
   <h2 class="account-name">AI Tools Middle East Deepak</h2>
-  <p class="verdict">All ten. Drawn from 91 held-out pairs. Across all 91 in this account, the model is right 72 times.</p>
+  <p class="verdict">79.1% on this account, 72 of 91 held-out pairs. All ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 3 Aug 2026</p>
     <h2>Agrees.</h2>
@@ -2002,9 +2049,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-1259110365529816">
-  <p class="kicker">Account</p>
+  <p class="kicker">64.5% held out</p>
   <h2 class="account-name">AI TV App 2</h2>
-  <p class="verdict">Five of these ten. Drawn from 62 held-out pairs. Across all 62 in this account, the model is right 40 times.</p>
+  <p class="verdict">64.5% on this account, 40 of 62 held-out pairs. Five of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 28 Sep 2026</p>
     <h2>Agrees.</h2>
@@ -2407,9 +2454,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-828139688922800">
-  <p class="kicker">Account</p>
+  <p class="kicker">50.9% held out</p>
   <h2 class="account-name">AITV BHAVESH</h2>
-  <p class="verdict">Five of these ten. Drawn from 169 held-out pairs. Across all 169 in this account, the model is right 86 times.</p>
+  <p class="verdict">50.9% on this account, 86 of 169 held-out pairs. Five of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 13 Nov 2023</p>
     <h2>Misses.</h2>
@@ -2812,9 +2859,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-779607833765451">
-  <p class="kicker">Account</p>
+  <p class="kicker">58.8% held out</p>
   <h2 class="account-name">BE10X AI 6 Brijesh</h2>
-  <p class="verdict">Eight of these ten. Drawn from 17 held-out pairs. Across all 17 in this account, the model is right 10 times.</p>
+  <p class="verdict">58.8% on this account, 10 of 17 held-out pairs. Eight of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 18 Dec 2023</p>
     <h2>Agrees.</h2>
@@ -3217,9 +3264,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-1079961713158297">
-  <p class="kicker">Account</p>
+  <p class="kicker">70.0% held out</p>
   <h2 class="account-name">Be10x AI Tool 007</h2>
-  <p class="verdict">Six of these ten. Drawn from 1,159 held-out pairs. Across all 1,159 in this account, the model is right 811 times.</p>
+  <p class="verdict">70.0% on this account, 811 of 1,159 held-out pairs. Six of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 26 Oct 2026</p>
     <h2>Misses.</h2>
@@ -3622,9 +3669,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-787397989640206">
-  <p class="kicker">Account</p>
+  <p class="kicker">50.0% held out</p>
   <h2 class="account-name">Be10x AI Tool fb2 Xor</h2>
-  <p class="verdict">One of these two. This account has only two held-out pairs, so all of them are here.</p>
+  <p class="verdict">50.0% on this account, 1 of 2 held-out pairs. Both are on this page.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 16 Feb 2026</p>
     <h2>Misses.</h2>
@@ -3707,9 +3754,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-1124454755623521">
-  <p class="kicker">Account</p>
+  <p class="kicker">27.7% held out</p>
   <h2 class="account-name">Be10x Hindi AI Tool</h2>
-  <p class="verdict">Four of these ten. Drawn from 47 held-out pairs. Across all 47 in this account, the model is right 13 times.</p>
+  <p class="verdict">27.7% on this account, 13 of 47 held-out pairs. Four of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 12 Aug 2024</p>
     <h2>Misses.</h2>
@@ -4112,9 +4159,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-2300729216796217">
-  <p class="kicker">Account</p>
+  <p class="kicker">61.1% held out</p>
   <h2 class="account-name">Excel fb4b Sanskar</h2>
-  <p class="verdict">Four of these ten. Drawn from 18 held-out pairs. Across all 18 in this account, the model is right 11 times.</p>
+  <p class="verdict">61.1% on this account, 11 of 18 held-out pairs. Four of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 1 Jan 2024</p>
     <h2>Agrees.</h2>
@@ -4517,9 +4564,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-1347116902878502">
-  <p class="kicker">Account</p>
+  <p class="kicker">51.9% held out</p>
   <h2 class="account-name">Excel Sanskar</h2>
-  <p class="verdict">Five of these ten. Drawn from 52 held-out pairs. Across all 52 in this account, the model is right 27 times.</p>
+  <p class="verdict">51.9% on this account, 27 of 52 held-out pairs. Five of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 8 Apr 2024</p>
     <h2>Agrees.</h2>
@@ -4922,9 +4969,9 @@
     </div>
   </section>
 </section><section class="account" id="acc-2195317627481797">
-  <p class="kicker">Account</p>
+  <p class="kicker">69.6% held out</p>
   <h2 class="account-name">Python Sanskar</h2>
-  <p class="verdict">Eight of these ten. Drawn from 23 held-out pairs. Across all 23 in this account, the model is right 16 times.</p>
+  <p class="verdict">69.6% on this account, 16 of 23 held-out pairs. Eight of these ten agree.</p>
   <section class="pair">
     <p class="kicker">Pair 1 · 16 Sep 2024</p>
     <h2>Misses.</h2>
